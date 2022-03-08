@@ -136,14 +136,15 @@
   function Images(data) {
     const temp = toCelsius(data.main.temp);
     let src = 'images/termometro.png';
-    if (temp > 28) {
-      src = 'images/caliente.png';
-    } else if (temp < 20) {
-      src = 'images/frio.png';
-    } 
-    tempImg.src = src;
+    /*     if (temp > 28) {
+          src = 'images/caliente.png';
+        } else if (temp < 20) {
+          src = 'images/frio.png';
+        } 
+        tempImg.src = src;
+      } */
+    temp > 28 ?  src = 'images/caliente.png' : temp < 20 ? src = 'images/frio.png' : tempImg.src = src;
   }
-
   async function search(query) {
     try {
       const response = await fetch(`${api.url}?q=${query}&appid=${api.key}&lang=es`);
@@ -173,4 +174,3 @@
   }
 
   searchform.addEventListener('submit', onSubmit, true);
-
