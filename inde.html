@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title> Aplicacion del Clima </title>
+</head>
+
+<body>
+    <main>
+      <div>
+        <div class="search-form">
+          <form id="search-form">
+              <div id="reset"></div>
+            <div id="borrar">
+              <div class="loggin">
+                <button type="button" class="login" id="open">Registrate</button>
+              </div>
+            </div>
+            <div class="searchbox">
+                <input type="text" placeholder="Busca lugares" class="search" id="searchbox" />
+                <button class="buttonn"><img src="/images/lupa-de-busqueda.png" alt="#" ></button>
+            </div>
+          </form>
+          <div id="greeting"></div>
+          <div id="contFormulario">
+            <div class="modal-container" id="modal_container">
+              <div class="modal">
+                <div class="colour">
+                  <h1>Complete del formulario para continuar:</h1> 
+               </div>
+               <div id="contFormulario">
+                <form class="columna" id="form">
+
+                    <input class="complete" id="nombre" type="text" placeholder="Ingrese Nombre:" />
+
+
+                    <input class="complete" id="apellido" type="text" placeholder="Ingrese Apellido:" />
+
+
+                    <input class="complete" id="email" type="text" placeholder="Ingrese Email:" />
+
+
+                    <input class="complete" id="password" type="text" placeholder="Ingrese Contraseña:" />
+
+
+                    <input class="complete" id="anioNacimiento" type="number" placeholder="Ingrese Año de nacimiento:" />
+
+                   <div class="leave">
+                     <button id="close" type="button" class="out" >Cerrar</button>
+                     <button id="origen" type="reset" class="out">Resetear</button>
+                    <button id="send" type="submit" class="out">Enviar</button>
+                  </div>
+                </form>
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="weather-card" id="card">
+          <div class="city" id="city">Argentina, AR</div>
+          <div class="date" id="date">08/02/2022</div>
+          <div class="temperature">
+            <div class="temp" id="temp">25°C</div>
+            <img src="/images/soleado.png" class="temp-img" id="temp-img" />
+          </div>
+          <div class="color">
+            <div class="weather" id="weather">Cielo Despejado</div>
+            <div class="range" id="range">Humedad:</div>
+            <div class="range" id="rangee">Viento:</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="memory">
+        <div class="cubo">
+          <div class="weather_card_2" id="card">
+            <p id="nothing_1">Sin información...</p>
+          </div>                
+        </div>
+        <div class="cubo">
+          <div class="weather_card_3" id="card">
+            <p id="nothing_2">Sin información...</p>
+          </div>                
+        </div>
+        <div class="cubo">
+          <div class="weather_card_4" id="card">
+            <p id="nothing_3">Sin información...</p>
+          </div>                
+        </div>
+        <div class="cubo">
+          <div class="weather_card_5" id="card">
+            <p id="nothing_4">Sin información...</p>
+          </div>                
+        </div>
+      </div>
+      </main>
+      <footer>
+        <p>Creado por <a href="https://www.instagram.com/santi_gonzalez17/">Santiago Gonzalez</a></p>
+        <p>Copyright Santiago - Gonzalez 2022. Todos los derechos reservados. Defensa de las y los consumidores. Para reclamos <a href="https://www.instagram.com/santi_gonzalez17/" title="Ingrese aqui">Ingrese aqui</a></p>
+      </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
