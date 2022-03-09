@@ -123,7 +123,6 @@
     modal_container.classList.remove("show");
   }) 
 
-
   const card = document.getElementById('card')
   const city = document.getElementById('city');
   const date = document.getElementById('date');
@@ -135,7 +134,7 @@
   
   function Images(data) {
     const temp = toCelsius(data.main.temp);
-    let src = '../images//termometro.png';
+    let src = '/images//termometro.png';
     /*     if (temp > 28) {
           src = 'images/caliente.png';
         } else if (temp < 20) {
@@ -143,7 +142,7 @@
         } 
         tempImg.src = src;
       } */
-    temp > 28 ?  src = '../images/caliente.png' : temp < 20 ? src = '../images/frio.png' : tempImg.src = src;
+    temp > 28 ?  src = 'images/caliente.png' : temp < 20 ? src = 'images/frio.png' : tempImg.src = src;
   }
   async function search(query) {
     try {
