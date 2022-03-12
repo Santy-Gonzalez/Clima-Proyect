@@ -14,7 +14,6 @@
     color: var(--text-color);
     background-image: url('https://source.unsplash.com/1600x900/?landscape');
     background-size: 100% 100%;
-    image-rendering: crisp-edges;
   }
   
   a {

@@ -1,3 +1,8 @@
+//Api clima
+const api = {
+  key: '1b742706fc7782b890c5c59222605dca',
+  url: `https://api.openweathermap.org/data/2.5/weather`
+}
 
   //Variables Storage
   const welcome = 'bienvenida';
@@ -15,6 +20,12 @@
   let esMayorDeEdad = edad >= 18; 
 
   //Variables DOM
+
+  const nothing_1 = document.getElementById("nothing_1");
+  const nothing_2 = document.getElementById("nothing_2");
+  const nothing_3 = document.getElementById("nothing_3");
+  const nothing_4 = document.getElementById("nothing_4");
+
   const greeting = document.getElementById("greeting");
   
   const reset = document.getElementById("reset");
@@ -38,6 +49,7 @@
   const email = document.getElementById('email');
   const password = document.getElementById('password');
 
+  //Formulario para loguearse y verificacios si estan todos los campos 
   form.addEventListener("submit", (e) =>{
     e.preventDefault();
 
@@ -54,7 +66,7 @@
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1200,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -66,6 +78,11 @@
         icon: 'success',
         title: 'Registrado con Éxito'
       })
+
+      setTimeout(() => {
+         location.reload();
+      }, 1200);
+
       }else{
         Swal.fire({
           icon: 'error',
@@ -77,6 +94,8 @@
       checkForm();
   })
 
+  //Checkform crea mensaje de inicio
+
   const checkForm = () => {
     if (nameStorage && nameStorage !== 'null'){
       const element = document.createElement("div");
@@ -86,35 +105,41 @@
       eliminarDatos();
       borrar.remove();
      }else{
-      searchbox.addEventListener("click",()=>{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Debes loguearte primero',
-        })
-    })
+       if (checkForm !== null) {
+        searchbox.addEventListener("click",()=>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Debes loguearte primero',
+          })
+      })
+       }
+
     }
   }
+
+  //funcion eliminarDatos crea un boton que resetea el localStorage
 
   function eliminarDatos () {
     const otherElement = document.createElement("div");
     otherElement.innerHTML = `
     <div class="logginn">
-    <button class="login" id="resetear">Resetear Datos</button>
+    <button type="button" class="login" id="resetear">Resetear Datos</button>
     </div>`;
     reset.prepend(otherElement);
-    otherElement.onclick = () => {
+    otherElement.addEventListener('click', () =>{
       localStorage.removeItem('nombreUsuario');
       localStorage.removeItem('apellidoUsuario');
       localStorage.removeItem('anioNacimientoUsuario');
       localStorage.removeItem('emailUsuario');
       localStorage.removeItem('passwordUsuario');
       location.reload();
-    }
+    })
   }
 
   checkForm();
 
+  //Ventana modal
    open.addEventListener('click', () =>{
     modal_container.classList.add("show");
   })
@@ -123,6 +148,7 @@
     modal_container.classList.remove("show");
   }) 
 
+  //Traigo los elementos id para luego declararles sus respectivos valores
   const card = document.getElementById('card')
   const city = document.getElementById('city');
   const date = document.getElementById('date');
@@ -132,18 +158,14 @@
   const range = document.getElementById('range');
   const rangee = document.getElementById('rangee');
   
+  //Funcion coloca imagenes dependiendo de la temp
   function Images(data) {
     const temp = toCelsius(data.main.temp);
     let src = '/images//termometro.png';
-    /*     if (temp > 28) {
-          src = 'images/caliente.png';
-        } else if (temp < 20) {
-          src = 'images/frio.png';
-        } 
-        tempImg.src = src;
-      } */
     temp > 28 ?  src = 'images/caliente.png' : temp < 20 ? src = 'images/frio.png' : tempImg.src = src;
   }
+
+  //Traigo valores y declaro 
   async function search(query) {
     try {
       const response = await fetch(`${api.url}?q=${query}&appid=${api.key}&lang=es`);
@@ -153,6 +175,8 @@
       data.innerHTML = (new Date()).toLocaleDateString();
       temp.innerHTML = `${toCelsius(data.main.temp)}°C`;
       weather.innerHTML = data.weather[0].description;
+      range.innerHTML = 'Humedad: ' + data.main.humidity + '%';
+      rangee.innerHTML = 'Viento: ' + data.wind.speed + 'm/s';
       Images(data);
     } catch (err) {
       Swal.fire({
@@ -163,13 +187,14 @@
     }
   }
 
+  //Paso los valores de kelvin a centigrados
   function toCelsius(kelvin) {
      return Math.round(kelvin - 273.15);
    } 
 
+  //Funcion de busqueda 
   function onSubmit(event) {
     event.preventDefault();
     search(searchbox.value);
   }
-
   searchform.addEventListener('submit', onSubmit, true);
