@@ -20,7 +20,6 @@ const api = {
   let esMayorDeEdad = edad >= 18; 
 
   //Variables DOM
-
   const nothing_1 = document.getElementById("nothing_1");
   const nothing_2 = document.getElementById("nothing_2");
   const nothing_3 = document.getElementById("nothing_3");
@@ -92,10 +91,10 @@ const api = {
       }
 
       checkForm();
+
   })
 
   //Checkform crea mensaje de inicio
-
   const checkForm = () => {
     if (nameStorage && nameStorage !== 'null'){
       const element = document.createElement("div");
@@ -119,7 +118,6 @@ const api = {
   }
 
   //funcion eliminarDatos crea un boton que resetea el localStorage
-
   function eliminarDatos () {
     const otherElement = document.createElement("div");
     otherElement.innerHTML = `
@@ -198,3 +196,5 @@ const api = {
     search(searchbox.value);
   }
   searchform.addEventListener('submit', onSubmit, true);
+
+  //Fin del proyecto
